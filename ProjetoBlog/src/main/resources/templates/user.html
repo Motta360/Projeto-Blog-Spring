@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${user.userName}"></title>
+</head>
+<body>
+	<nav>
+	     <h1><a href="/">Home</a></h1>
+	 </nav>
+    <h1> Pagina do Usuario</h1>
+    <br>
+    <hr>
+    <br>
+    <h2 th:text="'Nome: '+${user.userName}">Nome</h2>
+    <br>
+    <h3 th:text="'Email: '+${user.email}"></h3>
+    <br>
+    <h3 th:text="'Senha: '+${user.password}"></h3>
+    <br>
+    <br>
+    <h2>Posts: </h2>
+    <div th:each="post : ${user.getPosts()}">
+        <h3><a th:href="@{'/posts/'+${post.id}}" th:text="${post.title}"> Titulo</a></h3>
+        <br>
+    </div>
+    
+</body>
+</html>

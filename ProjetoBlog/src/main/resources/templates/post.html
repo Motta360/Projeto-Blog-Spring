@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${post.title}">Document</title>
+</head>
+<body>
+	<nav>
+	     <h1><a href="/">Home</a></h1>
+	 </nav>
+    <h1 th:text="${post.title}" ></h1>
+    <br>
+    <h2 th:text="${post.text}"></h2>
+    <br>
+    <h2><a th:href="@{'/users/'+${post.user.id}}" th:text="'Escrito por: '+ ${post.user.userName}"></a></h2>
+    <br>
+    <h3 th:text="'Data: '+${post.getCriadoEm()}"></h3>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+	<nav>
+	     <h1><a href="/">Home</a></h1>
+	 </nav>
+    <h1>Blog Lucas Motta Teixeira</h1>
+	<br>
+	<hr>
+    <div class="posts" th:each="post : ${posts}">
+
+        <h2 ><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a></h2>
+        <br>
+        <h3 th:text="${post.text}"></h3>
+        <br>
+        <h4 ><a th:text="'Criado por: ' + ${post.user.userName}" th:href="@{'/users/' + ${post.user.id}}"></a></h4>
+        <br>
+        <h4 th:text="'Data do post: ' + ${post.getCriadoEm()}"></h4>
+
+    </div>
+</body>
+</html>

@@ -29,8 +29,11 @@ public class Config implements CommandLineRunner {
 		userService.save(u1);
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm");
 		Post p1 = new Post(1l, "Post 1", "Primeiro Texto excrito", LocalDateTime.parse("01/01/2024 | 15:07", fmt), u1);
-		postService.save(p1);
 		
+		Post p2 = new Post(null, "Post 2", "Segundo texto que foi escrito uau", LocalDateTime.now(), u1);
+		
+		postService.save(p1);
+		postService.save(p2);
 	}
 	
 

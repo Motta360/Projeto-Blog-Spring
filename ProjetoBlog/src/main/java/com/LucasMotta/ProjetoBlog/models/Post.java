@@ -1,6 +1,7 @@
 package com.LucasMotta.ProjetoBlog.models;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -60,8 +61,9 @@ public class Post {
 		this.text = text;
 	}
 
-	public LocalDateTime getCriadoEm() {
-		return criadoEm;
+	public String getCriadoEm() {
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm");
+		return fmt.format(criadoEm);
 	}
 
 	public void setCriadoEm(LocalDateTime criadoEm) {
