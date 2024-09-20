@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.LucasMotta.ProjetoBlog.models.Post;
@@ -24,6 +25,17 @@ public class PostController {
 			Post obj = post.get();
 			model.addAttribute("post",obj);
 			return "post";
+		}else {
+			return "404";
+		}
+	}
+	
+	@GetMapping("/posts/delete/{id}")
+	public String getDeletarPosts(@ModelAttribute Post post) {
+		Optional<Post> deleted = postService.findById(post.getId());
+		if(deleted.isPresent()) {
+			postService.delete(post.getId());
+			return "redirect:/";
 		}else {
 			return "404";
 		}

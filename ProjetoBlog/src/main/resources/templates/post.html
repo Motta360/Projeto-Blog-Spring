@@ -17,5 +17,12 @@
     <br>
     <h3 th:text="'Data: '+${post.getCriadoEm()}"></h3>
 
+
+    <form action="#" th:action="@{'delete/'+${post.id}}" method="get">
+        <button type="submit">Apagar Post</button>
+    </form>>
+
+    </form>
+
 </body>
 </html>
