@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.LucasMotta.ProjetoBlog.models.Post;
 import com.LucasMotta.ProjetoBlog.models.User;
@@ -20,11 +21,13 @@ public class Config implements CommandLineRunner {
 	@Autowired
 	PostService postService;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		User u1 = new User(1l, "lucas", "123", "lucas@gmail.com");
+		User u1 = new User(1l, "lucas", passwordEncoder.encode("123"), "lucas@gmail.com");
 		
 		userService.save(u1);
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm");
